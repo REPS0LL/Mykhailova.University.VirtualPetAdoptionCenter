@@ -111,3 +111,8 @@ The application uses a relational database managed by Entity Framework. The `Vir
 - Prepare for project launch and promotion.
 - Begin planning for future feature enhancements and updates. ✔
 
+
+## Anti-Lab 2
+### Anastasiia Prokopishena
+- **Project link** https://github.com/nastya-prokopishena/Prokopishena.University.Personalized-Fitness-Coaching-Platform.git
+- **Pull request link** https://github.com/nastya-prokopishena/Mykhailova.University.VirtualPetAdoptionCenter/pull/1
