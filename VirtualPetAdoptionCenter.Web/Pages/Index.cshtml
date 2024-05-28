@@ -1,0 +1,30 @@
+﻿@page
+
+@using VirtualPetAdoptionCenter.Web.Pages;
+@model IndexModel
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<form method="post">
+    <div>
+        <label class="input-login-label" for="login">Email:</label>
+        <input type="text" id="login" name="login" />
+    </div>
+
+    <div>
+        <label class="input-login-label" for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <div>
+        <button type="submit" class="main-button" formaction="/Account/SignIn">Sign In</button>
+        <button type="submit" class="main-button" formaction="/Account/SignUp">Sign Up</button>
+        <button type="submit" class="main-button" formaction="/Account/SignInMicrosoft">Sign In with Microsoft Account</button>
+        <button type="submit" class="main-button" formaction="/Account/SignInGoogle">Sign In with Google Account</button>
+    </div>
+</form>
+

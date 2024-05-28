@@ -1,0 +1,88 @@
+﻿@page
+@model VirtualPetAdoptionCenter.Web.Pages.PetDetailsModel
+
+<head> 
+<link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<label class="title-label"> Grooming and Care </label>
+
+<nav style="height: 75px; padding: 25px 50px; margin-top: 49px; margin-bottom: 50px;">
+    <ul>
+        <li><a href="/AllPets">Home</a></li>
+        <li><a href="/MyPets">MyPets</a></li>
+        <li><a href="/Account">Account</a></li>
+    </ul>
+</nav>
+
+<section class="articles">
+  
+    <article>
+        <div class="article-wrapper">
+            <figure>
+            <img src="@Model.Pet.Image" alt="" />
+            </figure>
+            <div class="article-body">
+                <h2>@Model.Pet.Name</h2>
+
+                @if (!Model.PetCondition.IsNailTrimmed)
+                {
+                    <p>You can trim your pet's nails now.</p>
+                    <form method="post">
+                        <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                        <input type="hidden" name="groomType" value="1" />
+                        <button type="submit" class="main-button" formaction="/Pet/UpdateGroomingTime" value="1">Trim nails</button>
+                    </form>
+                }
+                else
+                {
+                    <p>You need to wait at least 2 hours after the last nail trimming session to trim your pet's nails again.</p>
+                }
+                
+                @if (!Model.PetCondition.IsWashed)
+                {
+                    <p>You can wash your pet now.</p>
+                    <form method="post">
+                        <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                        <input type="hidden" name="groomType" value="2" />
+                        <button type="submit" class="main-button" formaction="/Pet/UpdateGroomingTime" value="2">Wash</button>
+                    </form>
+                }
+                else
+                {
+                    <p>You need to wait at least 2 hours after the last washing session to wash your pet again.</p>
+                }
+
+                @if (!Model.PetCondition.IsBrushed)
+                {
+                    <p>You can brush your pet's fur now.</p>
+                    <form method="post">
+                        <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                        <input type="hidden" name="groomType" value="3" />
+                        <button type="submit" class="main-button" formaction="/Pet/UpdateGroomingTime">Brush</button>
+                    </form>
+                }
+                else
+                {
+                    <p>You need to wait at least 2 hours after the last fur brushing session to brush your pet's fur again.</p>
+                }
+
+
+                @if (!Model.PetCondition.IsFeed)
+                {
+                    <p>You can feed your pet's fur now.</p>
+                    <form method="post">
+                        <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                        <input type="hidden" name="groomType" value="4" />
+                        <button type="submit" class="main-button" formaction="/Pet/UpdateGroomingTime">Feed</button>
+                    </form>
+                }
+                else
+                {
+                    <p>You need to wait at least 2 hours after the last feed session to brush your pet's fur again.</p>
+                }
+                    
+            </div>
+        </div>
+    </article>
+</section>

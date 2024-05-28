@@ -1,0 +1,76 @@
+
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+    color: #006400;
+    margin: 0;
+}
+
+.container {
+    width: 400px;
+    background-color: #e0eee8;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+h2 {
+    text-align: center;
+    color: #006400;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    color: #006400;
+}
+
+input[type="text"],
+input[type="password"] {
+
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #006400;
+    border-radius: 8px;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    background-color: #006400;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container button {
+    flex: 0 0 48%;
+    padding: 10px;
+    background-color: #006400;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+    .button-container button:hover {
+        background-color: #00a86b;
+    }

@@ -1,0 +1,36 @@
+﻿@page
+@model VirtualPetAdoptionCenter.Web.Pages.AllPetsModel
+
+<head>
+    <link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<label class="title-label"> All pets </label>
+
+<nav style="height: 75px; padding: 25px 50px; margin-top: 49px; margin-bottom: 50px;">
+    <ul>
+        <li><a href="/AllPets">Home</a></li>
+        <li><a href="/MyPets">MyPets</a></li>
+        <li><a href="/Account">Account</a></li>
+    </ul>
+</nav>
+
+<section class="articles">
+    @foreach (var pet in Model.Pets)
+    {
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    <img src="@pet.Image" alt="" />
+                </figure>
+                <div class="article-body">
+                    <h2>@pet.Name</h2>
+                    <p>@pet.Description</p>
+                    <form method="post">
+                        <button type="submit" class="main-button" formaction="/Pet/Adopt" id="petId" name="petId" value="@pet.Id">Adopt this Pet</button>
+                    </form>
+                </div>
+            </div>
+        </article>
+    }
+</section>

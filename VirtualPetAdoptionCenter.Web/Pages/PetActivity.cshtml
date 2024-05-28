@@ -1,0 +1,46 @@
+﻿@page
+@model VirtualPetAdoptionCenter.Web.Pages.PetActivityModel
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<label class="title-label">Selected Pet</label>
+
+<nav style="height: 75px; padding: 25px 50px; margin-top: 49px; margin-bottom: 50px;">
+    <ul>
+        <li><a href="/AllPets">Home</a></li>
+        <li><a href="/MyPets">MyPets</a></li>
+        <li><a href="/Account">Account</a></li>
+    </ul>
+</nav>
+
+<section class="articles">
+    <article>
+        <div class="article-wrapper">
+            <figure>
+                <img src="@Model.Pet.Image" alt="" />
+            </figure>
+            <div class="article-body">
+                <h2>@Model.Pet.Name</h2>
+                <p>Description: @Model.Pet.Description</p>
+                <p>Environment Type: @Model.Pet.EnvironmentType</p>
+                <p>Last Wash Time: @Model.PetCondition.IsWashed</p>
+                <p>Last Nail Trim Time: @Model.PetCondition.IsNailTrimmed</p>
+                <p>Last Brush Time: @Model.PetCondition.IsBrushed</p>
+                <p>Last Feed Time: @Model.PetCondition.IsFeed</p>
+                <form method="post">
+                    <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                    <input type="hidden" name="groomType" value="0" />                  
+                </form>
+
+                <form method="get" action="@Url.Action("GroomPet", "Pet")">
+                    <input type="hidden" name="petId" value="@Model.Pet.Id" />
+                    <button type="submit" class="main-button">Grooming and Care</button>
+                </form>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,129 @@
+﻿@page
+@using VirtualPetAdoptionCenter.Core.Services;
+@using VirtualPetAdoptionCenter.Models.DomainModels;
+@model VirtualPetAdoptionCenter.Web.Pages.MyPetsModel
+
+<label class="title-label"> My pets </label>
+
+<head>
+    <link rel="stylesheet" href="~/css/PetStyle.css" />
+</head>
+
+<nav style="height: 75px; padding: 25px 50px; margin-top: 49px; margin-bottom: 50px;">
+    <ul style="display: inline-block;">
+        <li><a href="/AllPets">Home</a></li>
+        <li><a href="/MyPets">MyPets</a></li>
+        <li><a href="/Account">Account</a></li>    
+    </ul>
+    @if (Model.Achievement != null && Model.Achievement.Feed == 1)
+    {
+        <img src="https://cdn-icons-png.flaticon.com/512/5863/5863510.png" alt="Feed Achievement" title="Feed Achievement" style=" width: 50px; height: 50px; margin-top: -10px; margin-right: 15px; float: right;">
+    }
+    @if (Model.Achievement != null && Model.Achievement.Adopt == 1)
+    {
+        <img src="https://cdn-icons-png.flaticon.com/512/6410/6410115.png" alt="Adopt Achievement" title="Adopt Achievement" style=" width: 50px; height: 50px; margin-top: -10px; margin-right: 15px; float: right;">
+    }
+    @if (Model.Achievement != null && Model.Achievement.Environment == 1)
+    {
+        <img src="~/image/istockphoto-1199032156-612x612.jpg (1).png" alt="Environment Achievement" title="Environment Achievement" style=" width: 50px; height: 50px; margin-top: -10px; margin-right: 15px; float: right;">
+    }
+</nav>
+
+
+<section class="articles">
+    @for (var i = 0; i < Model.Pets.Count(); i++)
+    {
+        var pet = Model.Pets[i];
+        var condition = Model.PetConditions[i];
+
+        <article>
+            <div class="article-wrapper">
+                <figure>
+                    @if (pet.EnvironmentType == "Garden")
+                    {
+                        <img src="https://t4.ftcdn.net/jpg/02/54/00/69/360_F_254006997_xRASPFxpBNlNiC4yFQxj8z8nrmFgVyNI.jpg" alt="" />
+                    }
+                    else if (pet.EnvironmentType == "Home")
+                    {
+                        <img src="https://images.squarespace-cdn.com/content/v1/5a4e83de9f8dceb1a2873aac/1589490209297-N0Y4JT5302VLSCC15J9B/IMG_6799.jpg" alt="" />
+                    }
+                    else if (pet.EnvironmentType == "Park")
+                    {
+                        <img src="https://static4.depositphotos.com/1004999/269/i/950/depositphotos_2693490-stock-photo-beautiful-park.jpg" alt="" />
+                    }
+                </figure>
+                <figure style="position: absolute; top: 0; left: 0;">
+                    <img src="@pet.Image" alt="" style="width: 100%; height: auto;" />
+                </figure>
+                <div class="article-body">
+                    <h2>@pet.Name</h2>
+                    <p>@pet.Description</p>
+
+                    <form method="get">
+                        <input type="hidden" name="userId" value="@pet.UserId" />
+                        <input type="hidden" name="petId" value="@pet.Id" />
+                        <button type="submit" formaction="/PetActivity" id="petId" name="petId" value="@pet.Id" class="main-button">Pet Activity</button>
+                    </form>
+
+               
+                    <form method="post">
+                        <input type="hidden" name="petId" value="@pet.Id" />
+
+            @if (pet.EnvironmentType != "Garden")
+            {
+                            <button type="submit" formaction="/Pet/SetEnvironment" name="environment" value="Garden" class="main-button">Set Garden Environment</button>
+            }
+
+            @if (pet.EnvironmentType != "Home")
+            {
+                            <button type="submit" formaction="/Pet/SetEnvironment" name="environment" value="Home" class="main-button">Set Home Environment</button>
+            }
+
+            @if (pet.EnvironmentType != "Park")
+            {
+                            <button type="submit" formaction="/Pet/SetEnvironment" name="environment" value="Park" class="main-button">Set Park Environment</button>
+            }
+                    </form> 
+
+        @if (condition.IsWashed)
+                    {
+                        <img src="/image/покупаний.png" title="Washed" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+                    else
+                    {
+                        <img src="/image/покупати.png" title="Need wash" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+
+                    @if (condition.IsBrushed)
+                    {
+                        <img src="/image/розчесана.png" title="Brush" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+                    else
+                    {
+                        <img src="/image/розчесати.png" title="Need Brush" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+
+                    @if (condition.IsNailTrimmed)
+                    {
+                        <img src="/image/nails.png" title="Nail Trimming" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+                    else
+                    {
+                        <img src="/image/nails2.png" title="Need Nail Trimming" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+                    @if (condition.IsFeed)
+                    {
+                        <img src="/image/покормлений-removebg-preview.png" title="Feed" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+                    else
+                    {
+                        <img src="/image/покормити-removebg-preview.png" title="Want eat" style="width: 50px; height: 50px; margin-right: 15px;">
+                    }
+
+
+
+                </div>
+            </div>
+        </article>  
+    }
+</section>
